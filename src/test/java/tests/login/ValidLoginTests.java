@@ -1,5 +1,6 @@
 package tests.login;
 
+import listeners.RetryAnalyzer;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.LoginPage;
@@ -8,7 +9,7 @@ import utils.PropertyReader;
 
 public class ValidLoginTests extends BaseTest {
 
-    @Test
+    @Test(retryAnalyzer = RetryAnalyzer.class)
     public void testValidLogin() {
 
         LoginPage loginPage = new LoginPage(getDriver());

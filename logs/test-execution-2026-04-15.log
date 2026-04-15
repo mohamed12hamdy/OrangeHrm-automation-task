@@ -1,0 +1,24 @@
+2026-04-15 20:58:26 [INFO ] LoginPage - Entered username: By.cssSelector: input[name='username']
+2026-04-15 20:58:26 [INFO ] LoginPage - Entered password: By.cssSelector: input[name='password']
+2026-04-15 20:58:26 [INFO ] LoginPage - User clicked login: By.cssSelector: button[type='submit']
+2026-04-15 20:58:26 [INFO ] BaseTest - Attempted login with valid credentials
+2026-04-15 21:06:10 [INFO ] LoginPage - Entered username: By.cssSelector: input[name='username']
+2026-04-15 21:06:11 [INFO ] LoginPage - User clicked login: By.cssSelector: button[type='submit']
+2026-04-15 21:06:11 [INFO ] BaseTest - Attempted login with valid username and empty password
+2026-04-15 21:06:19 [INFO ] LoginPage - Entered password: By.cssSelector: input[name='password']
+2026-04-15 21:06:19 [INFO ] LoginPage - User clicked login: By.cssSelector: button[type='submit']
+2026-04-15 21:06:19 [INFO ] BaseTest - Attempted login with empty username and valid password
+2026-04-15 21:06:24 [INFO ] LoginPage - User clicked login: By.cssSelector: button[type='submit']
+2026-04-15 21:06:24 [INFO ] BaseTest - Attempted login with empty username and password
+2026-04-15 21:06:33 [INFO ] LoginPage - Entered username: By.cssSelector: input[name='username']
+2026-04-15 21:06:33 [INFO ] LoginPage - Entered password: By.cssSelector: input[name='password']
+2026-04-15 21:06:33 [INFO ] LoginPage - User clicked login: By.cssSelector: button[type='submit']
+2026-04-15 21:06:33 [INFO ] BaseTest - Attempted login with invalid credentials: Admin / admin122
+2026-04-15 21:06:52 [INFO ] LoginPage - Entered username: By.cssSelector: input[name='username']
+2026-04-15 21:06:52 [INFO ] LoginPage - Entered password: By.cssSelector: input[name='password']
+2026-04-15 21:06:52 [INFO ] LoginPage - User clicked login: By.cssSelector: button[type='submit']
+2026-04-15 21:06:52 [INFO ] BaseTest - Attempted login with invalid credentials: Admin12 / admin123
+2026-04-15 21:07:09 [INFO ] LoginPage - Entered username: By.cssSelector: input[name='username']
+2026-04-15 21:07:09 [INFO ] LoginPage - Entered password: By.cssSelector: input[name='password']
+2026-04-15 21:07:09 [INFO ] LoginPage - User clicked login: By.cssSelector: button[type='submit']
+2026-04-15 21:07:09 [INFO ] BaseTest - Attempted login with invalid credentials: Both Invalid / wronguser

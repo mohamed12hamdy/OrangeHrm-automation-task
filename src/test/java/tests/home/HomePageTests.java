@@ -1,5 +1,6 @@
 package tests.home;
 
+import listeners.RetryAnalyzer;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -15,7 +16,7 @@ public class HomePageTests extends LoginBaseTest {
         homePage = new HomePage(driver);
     }
 
-    @Test(dataProvider = "widgetsData",dataProviderClass = data.HomeDataProvider.class)
+    @Test(dataProvider = "widgetsData",dataProviderClass = data.HomeDataProvider.class,retryAnalyzer = RetryAnalyzer.class)
     public void testWidgetIsVisible(String widgetName) {
         Assert.assertTrue(
                 homePage.isWidgetVisible(widgetName),

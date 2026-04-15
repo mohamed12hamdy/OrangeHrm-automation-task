@@ -1,5 +1,6 @@
 package tests.login;
 
+import listeners.RetryAnalyzer;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.LoginPage;
@@ -8,7 +9,7 @@ import utils.PropertyReader;
 
 public class InvalidLoginTests extends BaseTest {
 
-    @Test(dataProvider = "InvalidLoginData", dataProviderClass = data.InvalidLoginDataProvider.class)
+    @Test(dataProvider = "InvalidLoginData", dataProviderClass = data.InvalidLoginDataProvider.class,retryAnalyzer = RetryAnalyzer.class)
     public void testInvalidLogin(String username, String password) {
 
         LoginPage loginPage = new LoginPage(getDriver());
@@ -23,7 +24,7 @@ public class InvalidLoginTests extends BaseTest {
         );
     }
 
-    @Test
+    @Test(retryAnalyzer = RetryAnalyzer.class)
     public void testEmptyUsername() {
 
         LoginPage loginPage = new LoginPage(getDriver());
@@ -39,7 +40,7 @@ public class InvalidLoginTests extends BaseTest {
         );
     }
 
-    @Test
+    @Test(retryAnalyzer = RetryAnalyzer.class)
     public void testEmptyPassword() {
 
         LoginPage loginPage = new LoginPage(getDriver());
@@ -55,7 +56,7 @@ public class InvalidLoginTests extends BaseTest {
         );
     }
 
-    @Test
+    @Test(retryAnalyzer = RetryAnalyzer.class)
     public void testEmptyUsernameAndPassword() {
 
         LoginPage loginPage = new LoginPage(getDriver());

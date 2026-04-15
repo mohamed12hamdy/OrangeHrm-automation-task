@@ -14,11 +14,13 @@ public class WaitHelper {
 
     private WebDriverWait wait;
 
-    private int DEFAULT_TIMEOUT = 10;
-
     public WaitHelper(WebDriver driver) {
+        this(driver, PropertyReader.getInt("wait.timeout", 10));
+    }
+
+    public WaitHelper(WebDriver driver, int timeoutSeconds) {
         this.driver = driver;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(DEFAULT_TIMEOUT));
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutSeconds));
     }
 
     public WebElement waitForVisibility(By locator) {

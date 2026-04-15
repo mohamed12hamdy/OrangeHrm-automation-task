@@ -6,27 +6,38 @@ import java.util.Properties;
 
 public class PropertyReader {
 
-    private static final Properties props = new Properties();
+    private static volatile Properties props;
+    private static final Object lock = new Object();
 
-    static {
-        // Load properties from src/test/resources/config.properties via classpath
-        try (InputStream in = Thread.currentThread().getContextClassLoader().getResourceAsStream("config.properties")) {
-            if (in != null) {
-                props.load(in);
-            } else {
-                System.err.println("Warning: config.properties not found on classpath");
+    private static Properties getProperties() {
+        if (props == null) {
+            synchronized (lock) {
+                if (props == null) {
+                    props = new Properties();
+                    // Load properties from src/test/resources/config.properties via classpath
+                    try (InputStream in = Thread.currentThread().getContextClassLoader()
+                            .getResourceAsStream("config.properties")) {
+                        if (in != null) {
+                            props.load(in);
+                        } else {
+                            System.err.println("Warning: config.properties not found on classpath");
+                        }
+                    } catch (IOException e) {
+                        throw new ExceptionInInitializerError(
+                                "Failed to load config.properties: " + e.getMessage());
+                    }
+                }
             }
-        } catch (IOException e) {
-            throw new ExceptionInInitializerError("Failed to load config.properties: " + e.getMessage());
         }
+        return props;
     }
 
     public static String get(String key) {
-        return props.getProperty(key);
+        return getProperties().getProperty(key);
     }
 
     public static String get(String key, String defaultValue) {
-        return props.getProperty(key, defaultValue);
+        return getProperties().getProperty(key, defaultValue);
     }
 
     public static int getInt(String key, int defaultValue) {
@@ -45,9 +56,6 @@ public class PropertyReader {
         return Boolean.parseBoolean(v.trim());
     }
 
-    /**
-     * Expose the underlying Properties object for advanced usage.
-     */
     public static Properties getAll() {
         return props;
     }
